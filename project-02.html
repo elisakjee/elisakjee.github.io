@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elisa Jee — Bagatelle Pinball Machine</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg:        #09090f;
+  --surface:   #0e0e18;
+  --raised:    #131320;
+  --border:    #1c1c30;
+  --border-hi: #272742;
+  --cream:     #e2e2f8;
+  --text:      #c2c2e8;
+  --muted:     #5a5a8a;
+  --dim:       #323258;
+  --blue:      #4849b8;
+  --blue-glow: #6162d4;
+  --blue-deep: #33348a;
+  --blue-light:#9a9be8;
+  --font-serif:'Bodoni Moda', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  cursor: none;
+  overflow-x: hidden;
+}
+.cursor-dot {
+  width: 7px; height: 7px;
+  background: var(--blue-glow);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s;
+  box-shadow: 0 0 6px var(--blue-glow);
+}
+.cursor-ring {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(72,73,184,0.45);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s;
+}
+body.cursor-hover .cursor-dot  { width: 11px; height: 11px; }
+body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(72,73,184,0.7); }
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: 0.45;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.6rem 5vw;
+  transition: background 0.4s, padding 0.3s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(8,9,15,0.92);
+  backdrop-filter: blur(16px);
+  padding: 1rem 5vw;
+  border-color: var(--border);
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--cream); text-decoration: none;
+  letter-spacing: 0.01em; transition: color 0.2s;
+  cursor: pointer;
+}
+.nav-logo span { color: var(--blue-glow); font-style: italic; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); background: none;
+  border: 1px solid var(--border); padding: 0.6rem 1.2rem;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  font-family: var(--font-sans); text-decoration: none;
+  margin-bottom: 3rem; display: inline-flex;
+}
+.back-btn:hover { color: var(--blue-glow); border-color: var(--blue); }
+.back-btn .arrow { transition: transform 0.2s; }
+.back-btn:hover .arrow { transform: translateX(-4px); }
+.pd-header {
+  max-width: 1200px; margin: 0 auto;
+  padding: 8rem 5vw 4rem;
+  border-bottom: 1px solid var(--border);
+}
+.pd-eyebrow {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.pd-number {
+  font-size: 0.62rem; letter-spacing: 0.2em; color: var(--dim);
+  font-family: var(--font-sans);
+}
+.pd-tag {
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; border: 1px solid var(--border-hi); color: var(--blue-glow);
+}
+.pd-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 400; color: var(--cream);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.pd-title em { font-style: italic; color: var(--blue-glow); }
+.pd-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pd-chip {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--text); background: var(--raised); padding: 0.25rem 0.65rem;
+  border: 1px solid var(--border-hi);
+}
+.pd-body {
+  max-width: 1200px; margin: 0 auto;
+  padding: 5rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 6rem;
+  align-items: start;
+}
+.pd-content {}
+.pd-section-title {
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--blue-glow);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.pd-section-title::before {
+  content: ''; display: inline-block; width: 20px; height: 1px; background: var(--blue);
+}
+.pd-text-block { margin-bottom: 3.5rem; }
+.pd-text-block h3 {
+  font-family: var(--font-serif); font-size: 1.6rem;
+  font-weight: 400; color: var(--cream); margin-bottom: 1.2rem;
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.pd-text-block p {
+  font-size: 0.92rem; line-height: 1.85; color: var(--muted);
+  font-weight: 300; margin-bottom: 1rem;
+}
+.pd-text-block p strong { color: var(--text); font-weight: 500; }
+.pd-highlights {
+  border-left: 2px solid var(--blue); padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+.pd-highlights li {
+  font-size: 0.88rem; line-height: 1.7; color: var(--muted);
+  margin-bottom: 0.6rem; list-style: none; padding-left: 0;
+}
+.pd-highlights li::before { content: '→ '; color: var(--blue-glow); }
+.pd-sidebar { position: sticky; top: 8rem; }
+.pd-images { display: flex; flex-direction: column; gap: 1rem; }
+.pd-img-slot {
+  position: relative; width: 100%;
+  border: 1px solid var(--border); background: var(--raised);
+  overflow: hidden; transition: border-color 0.2s;
+}
+.pd-img-slot:hover { border-color: var(--border-hi); }
+.pd-img-slot img {
+  width: 100%; display: block;
+  aspect-ratio: 4/3; object-fit: cover;
+}
+.pd-img-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.8rem; color: var(--dim); cursor: pointer;
+  transition: background 0.2s;
+}
+.pd-img-placeholder:hover { background: var(--border); }
+.pd-img-placeholder svg { opacity: 0.35; transition: opacity 0.2s; }
+.pd-img-placeholder:hover svg { opacity: 0.6; }
+.pd-img-placeholder span {
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.pd-img-caption {
+  font-size: 0.65rem; color: var(--dim); letter-spacing: 0.06em;
+  padding: 0.5rem 0.8rem; border-top: 1px solid var(--border);
+  font-style: italic;
+}
+.pd-meta {
+  border: 1px solid var(--border); margin-top: 1.5rem;
+}
+.pd-meta-row {
+  padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+.pd-meta-row:last-child { border-bottom: none; }
+.pd-meta-label {
+  font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim);
+}
+.pd-meta-value { font-size: 0.82rem; color: var(--text); font-weight: 400; }
+@keyframes pdFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pd-animate { animation: pdFadeUp 0.6s var(--ease) both; }
+.pd-animate-2 { animation: pdFadeUp 0.6s 0.15s var(--ease) both; }
+.pd-animate-3 { animation: pdFadeUp 0.6s 0.28s var(--ease) both; }
+@media (max-width: 900px) {
+  nav { padding: 1.4rem 5vw; }
+  .pd-body { grid-template-columns: 1fr; gap: 3rem; }
+  .pd-sidebar { position: static; }
+}
+@media (max-width: 620px) {
+  body { cursor: auto; }
+  .cursor-dot,.cursor-ring { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="testIndex.html" class="nav-logo">Elisa <span>Jee</span></a>
+</nav>
+
+<div class="pd-header">
+  <a href="testIndex.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
+  <div class="pd-eyebrow pd-animate">
+    <span class="pd-number">02 / 04</span>
+    <span class="pd-tag">Fabrication · Leap Life</span>
+  </div>
+  <h1 class="pd-title pd-animate-2">Bagatelle<br><em>Pinball Machine</em></h1>
+  <div class="pd-chips pd-animate-3">
+    <span class="pd-chip">Onshape CAD</span>
+    <span class="pd-chip">CNC Milling</span>
+    <span class="pd-chip">Laser Cutting</span>
+    <span class="pd-chip">Manual Machining</span>
+    <span class="pd-chip">Tolerance Engineering</span>
+  </div>
+</div>
+
+<div class="pd-body">
+  <div class="pd-content">
+    <div class="pd-text-block">
+      <p class="pd-section-title">Overview</p>
+      <h3>Engineering a mechanical game from first principles</h3>
+      <p>The Bagatelle Pinball Machine project was a comprehensive end-to-end fabrication challenge: design a fully functional mechanical pinball machine entirely from scratch, relying on precision manufacturing rather than off-the-shelf mechanisms. Every component — rails, plunger, bumper posts, flippers, and the playfield itself — was conceived in CAD and produced in-house.</p>
+      <p>The project was completed through the <strong>Leap Life</strong> fabrication program, which emphasized real-world manufacturing constraints: material waste minimization, toolpath efficiency, and hitting dimensional tolerances under ±0.005" on critical assemblies.</p>
+    </div>
+
+    <div class="pd-text-block">
+      <p class="pd-section-title">Design & Fabrication Process</p>
+      <h3>From CAD to physical assembly</h3>
+      <p>I built the full assembly model in <strong>Onshape CAD</strong>, parametrically linking part families so that design iterations could be propagated automatically. The playfield was laser-cut from Baltic birch to achieve crisp, burr-free edges for ball guidance rails. Post anchors and mechanical housings were CNC milled from aluminum plate, requiring careful fixturing and multi-pass finishing strategies to hit tolerances.</p>
+      <p>Several components — the plunger housing, ball return channels, and spring retention mounts — required <strong>manual machining</strong> on a lathe and mill. This phase reinforced the importance of process sequencing: machining order directly determines which datums remain accessible for subsequent operations.</p>
+    </div>
+
+    <div class="pd-text-block">
+      <p class="pd-section-title">Outcomes</p>
+      <h3>A fully playable machine, built from scratch</h3>
+      <ul class="pd-highlights">
+        <li>All critical mating interfaces held to within ±0.005" of nominal dimensions</li>
+        <li>Plunger spring mechanism calibrated for consistent ball launch energy</li>
+        <li>Bumper post geometry tuned iteratively to achieve desired ball deflection angles</li>
+        <li>Final machine fully playable with smooth ball return and reliable flipper actuation</li>
+        <li>Documentation package created: assembly drawings, BOM, and machining setup sheets</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pd-sidebar">
+    <div class="pd-images">
+      <div class="pd-img-slot">
+        <div class="pd-img-placeholder">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Upload image</span>
+        </div>
+        <div class="pd-img-caption">CAD assembly / Onshape model</div>
+      </div>
+      <div class="pd-img-slot">
+        <div class="pd-img-placeholder">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Upload image</span>
+        </div>
+        <div class="pd-img-caption">Fabrication in progress</div>
+      </div>
+      <div class="pd-img-slot">
+        <div class="pd-img-placeholder">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Upload image</span>
+        </div>
+        <div class="pd-img-caption">Finished machine</div>
+      </div>
+    </div>
+    <div class="pd-meta">
+      <div class="pd-meta-row"><div class="pd-meta-label">Program</div><div class="pd-meta-value">Leap Life Fabrication</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Tools Used</div><div class="pd-meta-value">CNC Mill, Lathe, Laser Cutter</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">CAD Software</div><div class="pd-meta-value">Onshape</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Tolerance Target</div><div class="pd-meta-value">±0.005" on critical interfaces</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0, my=0, rx=0, ry=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+(function loop(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>60),{passive:true});
+</script>
+</body>
+</html>

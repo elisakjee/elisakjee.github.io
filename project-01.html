@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elisa Jee — Epilepsy Prevention Smart Eyewear</title>
+<title>Elisa Jee - Epilepsy Prevention Smart Eyewear</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -236,12 +236,12 @@ nav.scrolled {
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="testIndex.html" class="nav-logo">Elisa <span>Jee</span></a>
+  <a href="index.html" class="nav-logo">Elisa <span>Jee</span></a>
 </nav>
 
 <!-- PROJECT DETAIL -->
 <div class="pd-header">
-  <a href="testIndex.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
+  <a href="index.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
   <div class="pd-eyebrow pd-animate">
     <span class="pd-number">01 / 04</span>
     <span class="pd-tag">Neuroscience Design Lab · Ongoing</span>
@@ -262,15 +262,14 @@ nav.scrolled {
     <div class="pd-text-block">
       <p class="pd-section-title">Overview</p>
       <h3>Real-time seizure prevention through adaptive optics</h3>
-      <p>Photosensitive epilepsy (PSE) affects roughly 3–5% of people with epilepsy — a population for whom ordinary flickering light sources, screens, and strobe patterns pose a genuine neurological threat. Existing solutions are passive (tinted lenses) and offer no real-time adaptation. This project sets out to change that.</p>
-      <p>Working within Boston University's Neuroscience Design Lab, I am developing voltage-controlled smart eyewear capable of dynamically attenuating light stimuli in the <strong>3–30 Hz range</strong> — the primary trigger band for photosensitive seizures — in under 10 ms, fast enough to prevent the neural cascade before it begins.</p>
+      <p>Photosensitive epilepsy (PSE) affects roughly 3–5% of those with epilepsy. Individuals with PSE face a genuine neurological threat in which ordinary flickering light sources, screens, and strobe patterns cause significant seizure risk. Existing solutions are passive (tinted lenses) and offer no real-time adaptation. This project sets out to change that. Central to this mission is ensuring the device remains accessible and affordable to the populations who need it most.</p>
+      <p>Working in continuation of a Neuroscience Design Lab course, I am developing voltage-controlled smart eyewear capable of dynamically attenuating light stimuli in the <strong>3–30 Hz range,</strong> the primary trigger band for photosensitive seizures, and do so in under 10 ms, fast enough to prevent the neural cascade before it begins.</p>
     </div>
 
     <div class="pd-text-block">
       <p class="pd-section-title">Technical Approach</p>
       <h3>Sensing, processing, and response</h3>
-      <p>The system integrates three core layers. A <strong>PPG (photoplethysmography) sensor</strong> monitors ambient light fluctuation frequencies at the user's temple, streaming raw data to an Arduino microcontroller at 1 kHz. A custom firmware pipeline performs real-time frequency analysis: if detected flicker falls within the seizure-provoking band, the controller triggers lens opacity modulation within a single display frame.</p>
-      <p>I evaluated three candidate lens technologies — <strong>liquid crystal displays (LCD), liquid crystal on silicon (LCoS), and electrochromic films</strong> — across response time, attenuation depth, power draw, and optical clarity. LCoS emerged as the strongest candidate for response speed; electrochromic films offer the flattest spectral response for natural color rendering.</p>
+      <p>The system integrates three core layers. A <strong>light sensor</strong> monitors ambient light fluctuation frequencies, streaming raw data to an Arduino microcontroller. A custom firmware pipeline performs real-time frequency analysis: if detected flicker falls within the seizure-provoking band, the controller triggers lens opacity modulation within a single display frame. Complementing this, PPG sensors placed at the temple continuously monitor the user's physiological vitals, such as heart rate and blood oxygen levels, providing an additional data stream to track the user's condition in real time.</p>
     </div>
 
     <div class="pd-text-block">
@@ -278,10 +277,10 @@ nav.scrolled {
       <h3>Validation & next steps</h3>
       <ul class="pd-highlights">
         <li>Prototype validated attenuation of 3–30 Hz stimuli using controllable LED flicker test bench</li>
-        <li>Firmware achieves sub-10 ms detection-to-response latency on Arduino Nano 33 IoT</li>
+        <li>Firmware achieves sub-10 ms detection-to-response latency on Arduino Uno</li>
         <li>Comparative analysis of LCD, LCoS, and electrochromic lenses documented for next design iteration</li>
         <li>Ongoing: moving toward flexible PCB integration and ergonomic frame design</li>
-        <li>Goal: clinical pilot study partnership with BU neurology department</li>
+        <li>Goal: develop market-acceptable proof-of-concept model to attract funding and bring this device one step closer to the population in need </li>
       </ul>
     </div>
   </div>
@@ -290,28 +289,22 @@ nav.scrolled {
     <div class="pd-images">
       <div class="pd-img-slot">
         <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
+          <img src="images/epilepsy-goggles.png" alt="Goggles prototyping" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--border); display: block; object-position: center 60%;">
         </div>
         <div class="pd-img-caption">Prototype / hardware setup</div>
       </div>
       <div class="pd-img-slot">
-        <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
+        <div class="pd-img-slot">
+          <video width="100%" aspect-ratio="4/3" style="display: block; border: 1px solid var(--border); object-fit: cover;" autoplay muted loop>
+            <source src="images/goggles-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="pd-img-caption">Video Demonstration</div>
         </div>
-        <div class="pd-img-caption">Signal acquisition & firmware</div>
-      </div>
-      <div class="pd-img-slot">
-        <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
-        </div>
-        <div class="pd-img-caption">Lens technology comparison</div>
       </div>
     </div>
     <div class="pd-meta">
-      <div class="pd-meta-row"><div class="pd-meta-label">Status</div><div class="pd-meta-value">Ongoing — Neuroscience Design Lab</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Status</div><div class="pd-meta-value">Ongoing - Neuroscience Design Lab</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Role</div><div class="pd-meta-value">Lead Embedded Systems Designer</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Platform</div><div class="pd-meta-value">Arduino Nano 33 IoT</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Target</div><div class="pd-meta-value">3–30 Hz seizure trigger band</div></div>

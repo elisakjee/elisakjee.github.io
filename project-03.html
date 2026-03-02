@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elisa Jee — 7-Joint Optimized Acrylic Truss</title>
+<title>Elisa Jee - 7-Joint Optimized Acrylic Truss</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,11 +92,11 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav id="navbar">
-  <a href="testIndex.html" class="nav-logo">Elisa <span>Jee</span></a>
+  <a href="index.html" class="nav-logo">Elisa <span>Jee</span></a>
 </nav>
 
 <div class="pd-header">
-  <a href="testIndex.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
+  <a href="index.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
   <div class="pd-eyebrow pd-animate">
     <span class="pd-number">03 / 04</span>
     <span class="pd-tag">Structural Engineering</span>
@@ -116,16 +116,15 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     <div class="pd-text-block">
       <p class="pd-section-title">Overview</p>
       <h3>Maximum load capacity from minimum material</h3>
-      <p>Given a fixed budget of acrylic strip material, a set of permitted joint configurations, and a load application point, the challenge was to design a 7-joint truss that maximizes the load it can hold before catastrophic failure — then build it and see if the model was right.</p>
-      <p>This project demanded close integration between computational modeling and physical intuition. The final structure supported <strong>55.38 oz</strong>, exceeding the optimized prediction of 53.07 oz, and the MATLAB model correctly identified which member would buckle first under increasing load.</p>
+      <p>Given a fixed budget of acrylic strip material, a set of permitted joint configurations and quantitative specifications, the challenge was to design a truss that maximizes the load it can hold before catastrophic failure and to do so through the development and use of a MATLAB program to aid in analysis.</p>
+      <p>This project demanded close integration between computational modeling and physical intuition. The final structure supported <strong>55.38 oz</strong>, exceeding the optimized prediction of 53.07 oz and minimum load requirement. The MATLAB model created correctly identified which member would buckle first under increasing load.</p>
     </div>
 
     <div class="pd-text-block">
       <p class="pd-section-title">Methodology</p>
       <h3>Structural modeling & iterative geometry refinement</h3>
-      <p>I implemented a full 2D truss solver in <strong>MATLAB</strong>, assembling the global stiffness matrix via the direct stiffness method. Member forces were extracted under a unit applied load, then scaled to predict failure loads using Euler buckling theory for the compression members and tensile yield stress for members in tension.</p>
-      <p>The initial design predicted a capacity of <strong>38 oz</strong>. Through geometric iteration — adjusting joint positions while respecting the 7-joint constraint — I identified that shallow-angle compression diagonals were the bottleneck. Steepening those members reduced effective slenderness ratio and raised the predicted capacity to <strong>53.07 oz</strong>, a 40% improvement over the baseline.</p>
-      <p>The physical build used <strong>laser-cut acrylic strips</strong> joined with precision-drilled pin connections. Alignment fixtures were fabricated to ensure joint geometry matched the model within 0.5 mm.</p>
+      <p>I implemented a full 2D truss solver in <strong>MATLAB</strong>, assembling the global stiffness matrix to extract internal member forces under a unit load. Member forces were extracted under a unit applied load, then scaled to predict failure loads using Euler buckling theory for the compression members and tensile limits for members in tension.</p>
+      <p>The initial design predicted a capacity of <strong>38 oz</strong>. Through geometric iteration and adjusting joint positions, I identified that shallow-angle compression diagonals were causing instability through high slenderness ratios. Steepening those critical members and reducing their lengths led to an 40% increase in predicted load capacity to <strong>53.07oz.</strong></p>
     </div>
 
     <div class="pd-text-block">
@@ -133,7 +132,7 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
       <h3>Model validated by physical test</h3>
       <ul class="pd-highlights">
         <li>Initial design predicted 38 oz capacity; optimized design predicted 53.07 oz</li>
-        <li>Final physical structure held 55.38 oz — 4.4% above prediction</li>
+        <li>Final physical structure held 55.38 oz - 4.4% above prediction</li>
         <li>Critical buckling member correctly identified by MATLAB model prior to testing</li>
         <li>40% load capacity improvement achieved through geometric optimization alone</li>
         <li>Model accuracy sufficient for engineering design confidence</li>
@@ -142,36 +141,14 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
   </div>
 
   <div class="pd-sidebar">
-    <div class="pd-images">
-      <div class="pd-img-slot">
-        <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
-        </div>
-        <div class="pd-img-caption">MATLAB model / geometry diagrams</div>
-      </div>
-      <div class="pd-img-slot">
-        <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
-        </div>
-        <div class="pd-img-caption">Physical truss assembly</div>
-      </div>
-      <div class="pd-img-slot">
-        <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
-        </div>
-        <div class="pd-img-caption">Load test in progress</div>
-      </div>
-    </div>
     <div class="pd-meta">
       <div class="pd-meta-row"><div class="pd-meta-label">Type</div><div class="pd-meta-value">Structural Engineering</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Tools</div><div class="pd-meta-value">MATLAB, Laser Cutter</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Material</div><div class="pd-meta-value">Acrylic strip, pin joints</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Tools</div><div class="pd-meta-value">MATLAB</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Material</div><div class="pd-meta-value">Acrylic strips</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Load Held</div><div class="pd-meta-value">55.38 oz (predicted: 53.07 oz)</div></div>
     </div>
   </div>
+
 </div>
 
 <script>

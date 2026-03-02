@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elisa Jee — Pulsing Anatomical Heart Installation</title>
+<title>Elisa Jee - Pulsing Anatomical Heart Installation</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,11 +81,11 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav id="navbar">
-  <a href="testIndex.html" class="nav-logo">Elisa <span>Jee</span></a>
+  <a href="index.html" class="nav-logo">Elisa <span>Jee</span></a>
 </nav>
 
 <div class="pd-header">
-  <a href="testIndex.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
+  <a href="index.html" class="back-btn"><span class="arrow">←</span> Back to Projects</a>
   <div class="pd-eyebrow pd-animate">
     <span class="pd-number">04 / 04</span>
     <span class="pd-tag">Design Competition · Interactive Installation</span>
@@ -107,27 +107,24 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     <div class="pd-text-block">
       <p class="pd-section-title">Overview</p>
       <h3>Making the invisible visceral</h3>
-      <p>Your heartbeat is continuous, automatic, and entirely invisible. This installation makes it seen, heard, and felt — in real time, through the body of a translucent anatomical heart that literally glows to your pulse.</p>
-      <p>Designed and built for a competitive design exhibition, the <em>Pulsing Anatomical Heart</em> is an interactive biomedical art piece: a user places their finger on a PPG sensor, and the 3D-printed PETG heart begins to pulse with light at their exact cardiac rhythm. An LCD shows their live BPM; a speaker generates the characteristic hospital monitor tone, synchronized to each beat. The goal was to close the loop between physiology and perception — and to make biomedical technology feel alive.</p>
+      <p>Your heartbeat is continuous, automatic, and entirely invisible. This installation makes it seen, heard, and felt in real time, through the body of a translucent anatomical heart that literally glows to your pulse.</p>
+      <p>Designed and built for a competitive design exhibition, the <em>Beat Boxt</em> is an interactive biomedical art piece where a user places their finger on a PPG sensor, and the 3D-printed PETG heart begins to pulse with light at their exact cardiac rhythm. An LCD shows their live BPM; a speaker generates the characteristic hospital monitor tone, synchronized to each beat. The goal was to close the loop between physiology and perception - and to make biomedical technology feel alive.</p>
     </div>
 
     <div class="pd-text-block">
       <p class="pd-section-title">Technical Design</p>
       <h3>Hardware, firmware, and form working as one</h3>
-      <p>The heart form was modeled in Onshape with internal cavities optimized for LED diffusion — wall thickness tuned so that natural PETG translucency creates a soft, organic glow rather than a harsh point-source effect. Printed in translucent natural PETG, the geometry was oriented to maximize layer-line aesthetics on the visible outer surface.</p>
-      <p>An <strong>Arduino Nano</strong> runs a custom firmware loop that samples the PPG sensor at 100 Hz, applies a peak-detection algorithm to extract inter-beat interval, and drives three synchronized outputs: an LED driver inside the heart, an LCD module displaying live BPM, and a piezoelectric speaker producing a 880 Hz beep at each detected R-peak.</p>
-      <p>All electronics are housed in a <strong>custom 3D-printed enclosure</strong> designed to complement the heart piece aesthetically — dark, angular, clinical. The enclosure routes wiring cleanly and provides an ergonomic finger rest for the PPG sensor, making the interaction intuitive for exhibition visitors.</p>
+      <p>The heart form was modeled in Onshape using an existing template with wall thickness tuned so that natural PETG translucency creates a soft, organic glow rather than a harsh point-source effect. The heart was printed in translucent natural PETG and sanded to allow for even light diffusion.</p>
+      <p>An Arduino Nano runs a real-time loop using the PulseSensorPlayground library to read a PPG pulse sensor and detect the start of each heartbeat. On every detected beat, it flashes an LED inside the 3D-printed heart, updates a 16×2 LCD with live BPM, and triggers a short speaker beep to mimic a hospital-style heart monitor.</p>
+      <p>All electronics are housed in a <strong>custom 3D-printed enclosure</strong> designed to complement the heart piece aesthetically. The enclosure routes wiring cleanly and provides an ergonomic finger rest for the PPG sensor, making the interaction intuitive for exhibition visitors.</p>
     </div>
 
     <div class="pd-text-block">
       <p class="pd-section-title">Outcomes</p>
       <h3>Recognition & impact</h3>
       <ul class="pd-highlights">
-        <li>Exhibited at BU Engineering Design Competition — attracted sustained visitor engagement</li>
-        <li>Firmware achieved reliable pulse detection across a range of user skin tones and signal strengths</li>
-        <li>Peak-detection latency under 15 ms — imperceptible to viewers</li>
-        <li>PETG wall thickness optimized through 4 print iterations for ideal diffusion profile</li>
-        <li>Installation described by faculty judges as "the most emotionally resonant project in the cohort"</li>
+        <li>Exhibited at a Lutron Lighting Competition, hosted by Boston University</li>
+        <li>Firmware achieved reliable pulse detection across a range of user signal strengths</li>
       </ul>
     </div>
   </div>
@@ -136,31 +133,30 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     <div class="pd-images">
       <div class="pd-img-slot">
         <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
+          <img src="images/heart1.png" alt="Goggles prototyping" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--border); display: block; object-position: center 60%;">
         </div>
-        <div class="pd-img-caption">Heart sculpture lit up</div>
+        <div class="pd-img-caption">Heart front view</div>
       </div>
       <div class="pd-img-slot">
         <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
+          <img src="images/heart2.png" alt="Goggles prototyping" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--border); display: block; object-position: center 60%;">
         </div>
-        <div class="pd-img-caption">Electronics & enclosure</div>
+        <div class="pd-img-caption">Heart back view</div>
       </div>
       <div class="pd-img-slot">
         <div class="pd-img-placeholder">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Upload image</span>
-        </div>
-        <div class="pd-img-caption">Exhibition installation view</div>
+          <video width="100%" aspect-ratio="4/3" style="display: block; border: 1px solid var(--border); object-fit: cover;" autoplay muted loop>
+            <source src="images/heart-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="pd-img-caption">Video Demonstration</div>
       </div>
     </div>
     <div class="pd-meta">
       <div class="pd-meta-row"><div class="pd-meta-label">Type</div><div class="pd-meta-value">Design Competition Entry</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Platform</div><div class="pd-meta-value">Arduino Nano</div></div>
       <div class="pd-meta-row"><div class="pd-meta-label">Material</div><div class="pd-meta-value">Translucent Natural PETG</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Outputs</div><div class="pd-meta-value">LED pulse · BPM display · Audio</div></div>
+      <div class="pd-meta-row"><div class="pd-meta-label">Outputs</div><div class="pd-meta-value">Synchronized LED pulse, audio,and BPM display</div></div>
     </div>
   </div>
 </div>

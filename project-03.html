@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elisa Jee - 7-Joint Optimized Acrylic Truss</title>
+<title>Elisa Jee - Optimized Acrylic Truss</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -101,7 +101,7 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     <span class="pd-number">03 / 04</span>
     <span class="pd-tag">Structural Engineering</span>
   </div>
-  <h1 class="pd-title pd-animate-2">7-Joint Optimized<br><em>Acrylic Truss</em></h1>
+  <h1 class="pd-title pd-animate-2">Optimized<br><em>Acrylic Truss</em></h1>
   <div class="pd-chips pd-animate-3">
     <span class="pd-chip">MATLAB</span>
     <span class="pd-chip">Structural Analysis</span>
@@ -123,7 +123,7 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     <div class="pd-text-block">
       <p class="pd-section-title">Methodology</p>
       <h3>Structural modeling & iterative geometry refinement</h3>
-      <p>I implemented a full 2D truss solver in <strong>MATLAB</strong>, assembling the global stiffness matrix to extract internal member forces under a unit load. Member forces were extracted under a unit applied load, then scaled to predict failure loads using Euler buckling theory for the compression members and tensile limits for members in tension.</p>
+      <p>I implemented a full 2D truss force analysis program in <strong>MATLAB</strong>, assembling the global stiffness matrix to extract internal member forces under a unit load. Member forces were extracted under a unit applied load, then scaled to predict failure loads using Euler buckling theory for the compression members and tensile limits for members in tension.</p>
       <p>The initial design predicted a capacity of <strong>38 oz</strong>. Through geometric iteration and adjusting joint positions, I identified that shallow-angle compression diagonals were causing instability through high slenderness ratios. Steepening those critical members and reducing their lengths led to an 40% increase in predicted load capacity to <strong>53.07oz.</strong></p>
     </div>
 
@@ -140,14 +140,22 @@ nav.scrolled { background: rgba(8,9,15,0.92); backdrop-filter: blur(16px); paddi
     </div>
   </div>
 
-  <div class="pd-sidebar">
-    <div class="pd-meta">
-      <div class="pd-meta-row"><div class="pd-meta-label">Type</div><div class="pd-meta-value">Structural Engineering</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Tools</div><div class="pd-meta-value">MATLAB</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Material</div><div class="pd-meta-value">Acrylic strips</div></div>
-      <div class="pd-meta-row"><div class="pd-meta-label">Load Held</div><div class="pd-meta-value">55.38 oz (predicted: 53.07 oz)</div></div>
+<div class="pd-sidebar">
+  <div class="pd-images">
+    <div class="pd-img-slot">
+      <div class="pd-img-placeholder">
+        <img src="images/truss.png" alt="MATLAB model" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--border); display: block; object-position: center 50%;">
+      </div>
+      <div class="pd-img-caption">Truss Structure</div>
     </div>
   </div>
+  <div class="pd-meta">
+    <div class="pd-meta-row"><div class="pd-meta-label">Type</div><div class="pd-meta-value">Structural Engineering</div></div>
+    <div class="pd-meta-row"><div class="pd-meta-label">Tools</div><div class="pd-meta-value">MATLAB</div></div>
+    <div class="pd-meta-row"><div class="pd-meta-label">Material</div><div class="pd-meta-value">Acrylic strips</div></div>
+    <div class="pd-meta-row"><div class="pd-meta-label">Load Held</div><div class="pd-meta-value">55.38 oz (predicted: 53.07 oz)</div></div>
+  </div>
+</div>
 
 </div>
 

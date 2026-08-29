@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
   --border-hi: #272742;
   --cream:     #e2e2f8;
   --text:      #c2c2e8;
-  --muted:     #5a5a8a;
+  --muted:     #a0a0c8;
   --dim:       #323258;
   --blue:      #4849b8;
   --blue-glow: #6162d4;
@@ -221,7 +221,7 @@ section { padding: 8rem 5vw; position: relative; }
   position: absolute; bottom: 2.5rem; left: 5vw;
   display: flex; align-items: center; gap: 0.8rem;
   font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--dim); opacity: 0; animation: fadeIn 1s 1.4s forwards;
+  color: var(--blue-glow); opacity: 0; animation: fadeIn 1s 1.4s forwards;
 }
 .scroll-line { width: 40px; height: 1px; background: var(--dim); position: relative; overflow: hidden; }
 .scroll-line::after {
@@ -244,7 +244,7 @@ section { padding: 8rem 5vw; position: relative; }
 .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 2.5rem; border: 1px solid var(--border); }
 .fact { padding: 1.4rem; background: var(--raised); border: 1px solid var(--border); transition: background 0.2s; }
 .fact:hover { background: var(--border); }
-.fact-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.4rem; }
+.fact-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-glow); margin-bottom: 0.4rem; }
 .fact-value { font-size: 0.88rem; color: var(--text); font-weight: 400; }
 .about-right { padding-top: 2.5rem; }
 .trait-list { list-style: none; display: flex; flex-direction: column; }
@@ -297,7 +297,7 @@ section { padding: 8rem 5vw; position: relative; }
 .project-card:nth-child(2)::after,.project-card:nth-child(5)::after { background: var(--blue-glow); }
 .project-card:nth-child(3)::after,.project-card:nth-child(6)::after { background: var(--blue-light); }
 .project-card:hover::after { transform: scaleX(1); }
-.project-number { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--dim); margin-bottom: 1.5rem; }
+.project-number { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 1.5rem; }
 .project-tag {
   display: inline-block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 0.2rem 0.6rem; border: 1px solid var(--border-hi); color: var(--muted); margin-bottom: 1rem;
@@ -307,9 +307,9 @@ section { padding: 8rem 5vw; position: relative; }
 .project-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 0.9rem; letter-spacing: -0.01em; flex-grow: 1; }
 .project-desc { font-size: 0.8rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.5rem; font-weight: 300; }
 .project-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
-.chip { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.06em; color: var(--dim); background: var(--raised); padding: 0.2rem 0.55rem; border: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
+.chip { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); background: var(--raised); padding: 0.2rem 0.55rem; border: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
 .project-card:hover .chip { color: var(--text); border-color: var(--border-hi); }
-.project-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); transition: color 0.2s, gap 0.2s; margin-top: auto; background: none; border: none; cursor: pointer; font-family: var(--font-sans); z-index: 10; position: relative; pointer-events: auto; }
+.project-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, gap 0.2s; margin-top: auto; background: none; border: none; cursor: pointer; font-family: var(--font-sans); z-index: 10; position: relative; pointer-events: auto; }
 .project-card:hover .project-link { color: var(--blue-glow); gap: 0.7rem; }
 
 /* ─── SKILLS ─────────────────────────────────────────────────────────────────── */
